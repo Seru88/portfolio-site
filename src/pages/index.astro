@@ -1,9 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import ThreeScene from '../components/ThreeScene'
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title='Welcome to Astro.'>
   <main>
     <!-- <svg
 			class="astro-a"
@@ -33,45 +34,10 @@ import Card from "../components/Card.astro";
 				</linearGradient>
 			</defs>
 		</svg> -->
-    <h1 class="text-8xl">
-      Welcome to <span class="text-gradient">Astro</span>
-    </h1>
-
-    <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content text-center">
-        <div class="max-w-md">
-          <h1 class="text-5xl font-bold">Hello there</h1>
-          <p class="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button class="btn btn-primary">Get Started</button>
-        </div>
-      </div>
-    </div>
-    <ul role="list" class="grid grid-cols-2 gap-4 auto-rows-fr">
-      <Card
-        href="https://docs.astro.build/"
-        title="Documentation"
-        body="Learn how Astro works and explore the official API docs."
-      />
-      <Card
-        href="https://astro.build/integrations/"
-        title="Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
-      <Card
-        href="https://astro.build/themes/"
-        title="Themes"
-        body="Explore a galaxy of community-built starter themes."
-      />
-      <Card
-        href="https://astro.build/chat/"
-        title="Community"
-        body="Come say hi to our amazing Discord community. ❤️"
-      />
-    </ul>
+    <!-- <h1 class='text-8xl'>
+      Welcome to <span class='text-gradient'>Astro</span>
+    </h1> -->
+    <ThreeScene client:load />
   </main>
 </Layout>
 
