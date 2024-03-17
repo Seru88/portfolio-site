@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Box } from './Box'
 
-export default function ThreeScene() {
+export function ThreeScene() {
   return (
     <Canvas>
       <ambientLight intensity={Math.PI / 2} />
