@@ -1,16 +1,15 @@
-const multiplyMatrices = (A: number[], B: number[]) => {
-  return [
-    A[0] * B[0] + A[1] * B[1] + A[2] * B[2],
-    A[3] * B[0] + A[4] * B[1] + A[5] * B[2],
-    A[6] * B[0] + A[7] * B[1] + A[8] * B[2],
-  ]
-}
+const multiplyMatrices = (A: number[], B: number[]) => [
+  A[0] * B[0] + A[1] * B[1] + A[2] * B[2],
+  A[3] * B[0] + A[4] * B[1] + A[5] * B[2],
+  A[6] * B[0] + A[7] * B[1] + A[8] * B[2],
+]
 
 const oklch2oklab = ([l, c, h]: number[]) => [
   l,
   isNaN(h) ? 0 : c * Math.cos((h * Math.PI) / 180),
   isNaN(h) ? 0 : c * Math.sin((h * Math.PI) / 180),
 ]
+
 const oklab2oklch = ([l, a, b]: number[]) => [
   l,
   Math.sqrt(a ** 2 + b ** 2),
@@ -25,6 +24,7 @@ const rgb2srgbLinear = (rgb: number[]) =>
       ? c / 12.92
       : (c < 0 ? -1 : 1) * ((Math.abs(c) + 0.055) / 1.055) ** 2.4
   )
+
 const srgbLinear2rgb = (rgb: number[]) =>
   rgb.map(c =>
     Math.abs(c) > 0.0031308
@@ -90,8 +90,13 @@ const rgbLinear2xyz = (rgb: number[]) => {
   )
 }
 
+const clamp = (val: number, min: number, max: number) =>
+  Math.min(Math.max(val, min), max)
+
 export const oklch2rgb = (lch: number[]) =>
-  srgbLinear2rgb(xyz2rgbLinear(oklab2xyz(oklch2oklab(lch))))
+  srgbLinear2rgb(xyz2rgbLinear(oklab2xyz(oklch2oklab(lch)))).map(v =>
+    clamp(v, 0, 1)
+  )
 export const rgb2oklch = (rgb: number[]) =>
   oklab2oklch(xyz2oklab(rgbLinear2xyz(rgb2srgbLinear(rgb))))
 
